@@ -27,4 +27,4 @@ function makeSmallElement(name) {
 }
 
 // Event listner
-document.body.addEventListener('keypress', updateKeyInfo);
+addEventListener('keypress', updateKeyInfo);
