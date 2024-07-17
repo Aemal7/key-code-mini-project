@@ -3,34 +3,27 @@
 function updateKeyInfo(e) {
   const insert = document.querySelector('#insert');
 
-  console.log(insert);
   while (insert.firstChild) {
     insert.firstChild.remove();
   }
 
-  key = document.createElement('div');
-  key.className = 'key';
-  key.appendChild(document.createTextNode(`${e.key}`));
-  keySmall = document.createElement('small');
-  keySmall.appendChild(document.createTextNode('e.key'));
-  key.appendChild(keySmall);
-  insert.appendChild(key);
+  insert.appendChild(makeDivElement('key', e.key));
+  insert.appendChild(makeDivElement('keyCode', e.keyCode));
+  insert.appendChild(makeDivElement('code', e.code));
+}
 
-  keyCode = document.createElement('div');
-  keyCode.className = 'key';
-  keyCode.appendChild(document.createTextNode(`${e.keyCode}`));
-  keyCodeSmall = document.createElement('small');
-  keyCodeSmall.appendChild(document.createTextNode('e.keyCode'));
-  keyCode.appendChild(keyCodeSmall);
-  insert.appendChild(keyCode);
+function makeDivElement(name, val) {
+  div = document.createElement('div');
+  div.className = 'key';
+  div.appendChild(document.createTextNode(val));
+  div.appendChild(makeSmallElement(`e.${name}`));
+  return div;
+}
 
-  code = document.createElement('div');
-  code.className = 'key';
-  code.appendChild(document.createTextNode(`${e.code}`));
-  codeSmall = document.createElement('small');
-  codeSmall.appendChild(document.createTextNode('e.code'));
-  code.appendChild(codeSmall);
-  insert.appendChild(code);
+function makeSmallElement(name) {
+  small = document.createElement('small');
+  small.appendChild(document.createTextNode(name));
+  return small;
 }
 
 // Event listner
